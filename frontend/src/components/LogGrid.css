@@ -1,0 +1,58 @@
+.log-grid-container {
+    margin: 24px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.log-grid-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 8px 8px;
+}
+
+.log-grid-tooltip {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: pre-line;
+    pointer-events: none;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 12px;
+    max-width: 220px;
+    color: #222;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.summary-table th,
+.summary-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.summary-table th {
+    background-color: #f0f0f0;
+}
+
+.summary-table-hours {
+    text-align: right;
+}
+
+.summary-totals {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.summary-totals p {
+    margin: 0;
+}

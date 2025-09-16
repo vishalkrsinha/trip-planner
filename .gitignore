@@ -1,0 +1,32 @@
+# Node / React
+node_modules/
+build/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*.$py.class
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*~ 
+venv/
+.env
+
+# IDEs and OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Others
+*.egg-info/
+dist/

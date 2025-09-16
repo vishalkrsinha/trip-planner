@@ -1,0 +1,34 @@
+.daily-log-header {
+    border: 2px solid #19335c;
+    border-radius: 10px;
+    margin: 2rem auto 1.3rem auto;
+    padding: 17px 30px;
+    max-width: 900px;
+    background: #fff;
+}
+
+.header-row-1 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.header-row-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .header-row-1,
+    .header-row-2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

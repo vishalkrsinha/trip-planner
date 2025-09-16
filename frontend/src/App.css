@@ -1,0 +1,123 @@
+form {
+  background: #f8faff;
+  border: 1px solid #e6ecf3;
+  border-radius: 7px;
+  max-width: 540px;
+  margin: 2rem auto 1rem auto;
+  padding: 24px 20px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 2px 7px rgba(0,24,64,0.04);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.01em;
+  color: #222b4d;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+  font-size: 1em;
+  border: 1px solid #c6cede;
+  border-radius: 4px;
+  padding: 8px 6px;
+  outline: none;
+  transition: border-color 0.18s;
+  min-width: 200px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+  border-color: #007bff;
+  background: #eef8ff;
+}
+
+button[type="submit"] {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.error-message {
+  color: #C00;
+  background: #fff3f3;
+  border: 1px solid #FFD5D5;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 18px auto;
+  max-width: 460px;
+  font-size: 1.05em;
+}
+
+.eld-logs button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .tabs-container {
+    flex-wrap: wrap;
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+.trip-summary-card p {
+  margin: 0.2rem 0;
+}
+
+.App-header {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.App-header h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #19335c;
+  margin-bottom: 0;
+}
+
+.element {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE 10+ */
+  user-select: none;         /* Standard syntax */
+}
+
+@media print {
+  .element {
+    -webkit-print-color-adjust: exact; /* Chrome, Edge, Safari */
+    print-color-adjust: exact;         /* Firefox */
+  }
+}

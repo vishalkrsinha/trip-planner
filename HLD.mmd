@@ -1,0 +1,54 @@
+graph TD
+    subgraph "User's Browser"
+        A[React Frontend]
+    end
+
+    subgraph "Web Server"
+        B[Django Backend]
+    end
+
+    subgraph "External Services"
+        C[OpenRouteService API]
+    end
+
+    subgraph "Data Flow"
+        direction LR
+        D[User Inputs Trip Details] --> A
+        A -- 1. API Request (POST /api/trip) --> B
+        B -- 2. Fetches Route --> C
+        C -- 3. Returns Route Geometry & Duration --> B
+        B -- 4. Generates ELD Logs --> B
+        B -- 5. Sends Response (Route, Logs) --> A
+        A -- 6. Renders Map & Logs --> E[User Views Trip Plan]
+    end
+
+    %% Component Details
+    subgraph "Frontend Components (React)"
+        A1(App.js)
+        A2(Trip Form)
+        A3(RouteMap.js - Leaflet)
+        A4(MultiDayLogs.js)
+        A5(tripService.js - Axios)
+
+        A1 --> A2
+        A1 --> A3
+        A1 --> A4
+        A2 -- User Submit --> A5
+    end
+
+    subgraph "Backend Logic (Django)"
+        B1(views.py - API Endpoint)
+        B2(services.py)
+        B3(ELD Log Generator)
+        B4(HOS Rules Engine)
+
+        B1 --> B2
+        B2 --> B3
+        B3 -- Uses --> B4
+    end
+
+    %% Styling
+    classDef frontend fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef backend fill:#ccf,stroke:#333,stroke-width:2px;
+    class A,A1,A2,A3,A4,A5 frontend;
+    class B,B1,B2,B3,B4 backend;

@@ -1,0 +1,66 @@
+graph TD
+    subgraph Frontend
+        direction LR
+        subgraph "User Interaction"
+            UI_Form[Trip Form Inputs]
+            UI_Button[Generate Trip Button]
+        end
+
+        subgraph "App.js"
+            A_State["State (formData, tripState)"]
+            A_HandleChange["handleChange()"]
+            A_HandleSubmit["handleSubmit()"]
+            A_Reducer["tripReducer()"]
+        end
+
+        subgraph "Services"
+            S_CreateTrip["tripService.createTrip()"]
+        end
+
+        subgraph "Components"
+            C_RouteMap[RouteMap Component]
+            C_MultiDayLogs[MultiDayLogs Component]
+            C_LogGraph[FMCSALogGraphEnhanced]
+        end
+
+        subgraph "Utils"
+            U_LogProcessor["groupAndConvertLogs()"]
+            U_Remarks["generateRemarks()"]
+        end
+
+        UI_Form -- on change --> A_HandleChange
+        A_HandleChange -- updates --> A_State
+        UI_Button -- on click --> A_HandleSubmit
+        A_HandleSubmit -- calls --> S_CreateTrip
+        A_HandleSubmit -- dispatches 'FETCH_START' --> A_Reducer
+        S_CreateTrip -- POST /api/trip --> B_View
+        B_View -- returns JSON --> S_CreateTrip
+        S_CreateTrip -- returns response --> A_HandleSubmit
+        A_HandleSubmit -- dispatches 'FETCH_SUCCESS' --> A_Reducer
+        A_Reducer -- updates --> A_State
+        A_State -- triggers re-render --> C_RouteMap
+        A_State -- triggers re-render --> C_MultiDayLogs
+        A_HandleSubmit -- calls --> U_Remarks
+        A_State -- passes logs --> U_LogProcessor
+        U_LogProcessor -- returns groupedSegments --> C_MultiDayLogs
+        C_MultiDayLogs -- renders --> C_LogGraph
+    end
+
+    subgraph Backend
+        direction LR
+        B_View["views.py: trip()"]
+        B_Service["services.py: generate_eld_log()"]
+        B_LogGen["services.py: generate_eld_logs()"]
+        B_ORS[ORS API Call]
+
+        B_View -- calls --> B_Service
+        B_Service -- calls --> B_ORS
+        B_ORS -- returns route & duration --> B_Service
+        B_Service -- calls --> B_LogGen
+        B_LogGen -- returns logs --> B_Service
+    end
+
+    classDef frontend fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef backend fill:#ccf,stroke:#333,stroke-width:2px;
+    class UI_Form,UI_Button,A_State,A_HandleChange,A_HandleSubmit,A_Reducer,S_CreateTrip,C_RouteMap,C_MultiDayLogs,C_LogGraph,U_LogProcessor,U_Remarks frontend;
+    class B_View,B_Service,B_LogGen,B_ORS backend;

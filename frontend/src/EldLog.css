@@ -1,0 +1,31 @@
+/* frontend/src/EldLog.css */
+
+.eld-log-container {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.log-table th, .log-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.log-table th {
+  background-color: #e2e2e2;
+}
+
+.summary {
+  margin-top: 15px;
+  text-align: right;
+  font-weight: bold;
+}
